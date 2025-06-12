@@ -16,9 +16,11 @@ The installed folder structure should be like this:
     │   	├── 📄 EnvManager.gd 
     │   	├── 📄 env_example.env 
     │   	├── 📄 GodotEnv.gd 
-    │   	└── 🗂️ test_scene/ 
+     │   	├── 📄 plugin.cfg
+    │   	└── 🗂️ test_scene/ *(this is not required for production)*
     │ 	    	├──── 📄 EnvTestScene.tscn 
     │       	└──── 📄 env_test_scene.gd
+    │       	└──── 📄 test_env_manager.gd (a minimal unit test file)
 
  ## Enable the plugin in godot
 After importing the scripts (test_scene is not needed for plugin functioning), you will need to activate it in your Godot project:
