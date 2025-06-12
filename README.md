@@ -49,6 +49,30 @@ The env file is quite auto explanatory.
  - String, Int, Float and Bool values are accepted and managed
  - Line comments and trailing comments are supported
  - Quotation marks enclosed values are supported and converted to String by default
+## Env File Placement Strategy
+When working with environment variables (.env files) in Godot, strategic placement is crucial to ensure they serve their purpose as installation-specific configuration values and are not accidentally bundled with your exported game builds.
+
+#### Why Not Pack the .env File?
+Environment variables are designed to be unique to the current installation or deployment environment. This means they might contain:
+
+- API keys or sensitive credentials: These should never be hardcoded or distributed with your application.
+- Database connection strings: Specific to the server and credentials of a particular setup.
+- Feature flags: Toggled based on a specific deployment (e.g., development, testing, production).
+- Paths to external resources: Local paths that vary from one machine to another.
+- Applications specific config values and game settings
+Including the .env file directly in your packed build would defeat this purpose, potentially exposing sensitive information or forcing you to rebuild your game for every configuration change.
+
+#### Crucial Step: Filtering from Build Settings
+It is absolutely critical to exclude your .env file from Godot's export settings. Failing to do so will result in the .env file being packed inside your .pck file or executable, undermining the purpose of external configuration.
+
+#### How to Exclude Files in Godot:
+- Go to Project -> Export...
+- Select your desired Export Preset (e.g., Windows Desktop, Linux/X11).
+- In the "Resources" section, look for "Exclude Files" or "Filters".
+- Add the path to your .env file using the res:// prefix. For example:
+- If your file is res://.env, add res://.env.
+- If your file is res://data/.env, add res://data/.env.
+- You can also use wildcards if you have multiple .env files or other config files you want to exclude from a specific folder (e.g., res://data/* if you want to exclude everything in the data folder).
 
 ## Usage
 Once the plugin is active DotEnv should be autoloaded as a global singleton in godot.
