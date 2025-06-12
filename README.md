@@ -23,7 +23,8 @@ The installed folder structure should be like this:
 
  ## Enable the plugin in godot
 After importing the scripts (test_scene is not needed for plugin functioning), you will need to activate it in your Godot project:
-![Godot Plugins Panel](plugins.png)
+
+<img align="center" size="50%" src="plugins.png"> 
 
 You will find the plugins panel under the menu: Project -> Project Settings -> Plugins
 
