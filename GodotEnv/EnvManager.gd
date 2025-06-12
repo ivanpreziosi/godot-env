@@ -184,9 +184,13 @@ func get_bool(key: String, default: bool = false) -> bool:
 		return value
 	# If the value is a string, attempt conversion based on common boolean representations.
 	if typeof(value) == TYPE_STRING:
-		var s = String(value).to_lower()
-		# Return true if the string is "true", "1", "yes", or "on" (case-insensitive).
-		return s == "true" or s == "1" or s == "yes" or s == "on"
+		var s = String(value).to_lower().strip_edges()
+		var true_values = ["true", "1", "yes", "on", "y", "t", "enabled"]
+		var false_values = ["false", "0", "no", "off", "n", "f", "disabled"]
+		if s in true_values:
+			return true
+		elif s in false_values:
+			return false
 	# If the value is a number (integer or float), convert based on zero/non-zero.
 	# 0 (or 0.0) evaluates to false while and any non-zero number evaluates to true.
 	if typeof(value) == TYPE_INT or typeof(value) == TYPE_FLOAT:
