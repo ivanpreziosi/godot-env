@@ -12,7 +12,7 @@ func _ready():
 	print("All EnvManager tests passed.")
 
 func test_parse_value():
-	var em = DotEnv
+	var em = EnvManager.new()
 	# String with quotes
 	assert(em._parse_value("\"hello\"") == "helloz")
 	# Boolean
