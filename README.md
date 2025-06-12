@@ -75,6 +75,14 @@ It is absolutely critical to exclude your .env file from Godot's export settings
 - If your file is res://data/.env, add res://data/.env.
 - You can also use wildcards if you have multiple .env files or other config files you want to exclude from a specific folder (e.g., res://data/* if you want to exclude everything in the data folder).
 
+### Always Exclude .env Files from Your Git Repository
+You should never commit your .env files to your Git repository. These files typically contain sensitive data, such as API keys, database credentials, or other private configuration details, which must remain confidential.
+
+Instead, you should:
+
+- Provide an example.env file: This file should include all the necessary keys from your .env file but with placeholder values and clear instructions on how users can configure them for their own installation.
+- Offer alternative documentation: For more complex setups, provide comprehensive documentation (e.g., in your project's README.md or a dedicated wiki) guiding users through the necessary environment variable configuration steps.. 
+
 ## Usage
 Once the plugin is active DotEnv should be autoloaded as a global singleton in godot.
 Usage requires an actual .env file to be loaded. This is usually done at bootstrap time of your app, as one of the earliest subsystems to be loaded.
