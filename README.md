@@ -48,3 +48,59 @@ The env file is quite auto explanatory.
  - String, Int, Float and Bool values are accepted and managed
  - Line comments and trailing comments are supported
  - Quotation marks enclosed values are supported and converted to String by default
+
+## Usage
+Once the plugin is active DotEnv should be autoloaded as a global singleton in godot.
+Usage requires an actual .env file to be loaded. This is usually done at bootstrap time of your app, as one of the earliest subsystems to be loaded.
+This only requires a line of code:
+
+    extends Node
+    
+    func _ready() -> void:
+    	DotEnv.load_env("res://addons/GodotEnv/env_example.env")
+You can pass a custom path for your env file or just use the default value with the env sitting in the same folder as the root or executable.
+
+After loading you should have the following line in your console:
+
+    Env file loaded: res://addons/GodotEnv/env_example.env
+
+### Values retrieval
+Once the env file is loaded it will be available globally in your project. It will expose several retrieval functions to get values and infos from your env.
+
+    extends Node
+    
+    func _ready() -> void:
+	    # load the env file
+    	DotEnv.load_env("res://addons/GodotEnv/env_example.env")
+    	
+    	# print an env dump to console
+    	print(DotEnv.dump_as_string())
+    	
+    	# example of getters usage to retrieve values
+    	var data = {
+    		"SERVER_NAME" : DotEnv.get_string("SERVER_NAME", "bogus: SERVER_NAME"),
+    		"IS_PROTECTED" : DotEnv.get_bool("IS_PROTECTED", false),
+    		"PORT" : DotEnv.get_int("PORT", -1),
+    		"MODIFIER" : DotEnv.get_float("MODIFIER", 5.5),
+    		"STRING_NUMBER" : DotEnv.get_var("STRING_NUMBER", "nullus"),
+    		"SALT" : DotEnv.get_string("SALT", "nullus salis est"),
+    		"DATA_PATH" : DotEnv.get_string("DATA_PATH", "nulla via est"),
+    		"DATA FILE" : DotEnv.get_string("DATA FILE", "nullum documentum est"),
+    	}
+    	
+    	# example of has_var() usage
+    	print (DotEnv.has_var("PORT"))
+    	print (DotEnv.has_var("NON_EXISTENT_KEY"))
+    	
+    	# print the value retrieved before
+    	var print_string  = '''
+    	"SERVER_NAME" : {SERVER_NAME},
+    	"IS_PROTECTED" : {IS_PROTECTED},
+    	"PORT" : {PORT},
+    	"MODIFIER" : {MODIFIER},
+    	"STRING_NUMBER" : {STRING_NUMBER},
+    	"SALT" : {SALT},
+    	"DATA_PATH" : {DATA_PATH},
+    	"DATA FILE" : {DATA FILE},
+    	'''
+    	print(print_string.format(data))
