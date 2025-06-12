@@ -1,6 +1,7 @@
 # Godot-Env
 <img align="right" size="50%" src="logo.png"> 
-Godot-Env provides a minimal and robust implementation of the [.env pattern](https://12factor.net/config) for Godot Engine. It is designed to be extremely lightweight and dependency-free, offering a clean way to manage your application's configuration by separating it from the source code.
+
+Godot-Env provides a minimal and robust implementation of the  <a href="https://12factor.net/config">.env pattern</a> for Godot Engine. It is designed to be extremely lightweight and dependency-free, offering a clean way to manage your application's configuration by separating it from the source code.
 
 ## Installation
 The package is a plugin for Godot 4.4 and can be installed by downloading the plugin and putting it in your addons folder:
