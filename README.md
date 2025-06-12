@@ -130,3 +130,6 @@ Once the env file is loaded it will be available globally in your project. It wi
     	"DATA FILE" : {DATA FILE},
     	'''
     	print(print_string.format(data))
+More informations about available methods and class details here:
+
+https://github.com/ivanpreziosi/godot-env/blob/main/GodotEnv/docs/EnvManager.md
