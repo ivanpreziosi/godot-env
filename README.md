@@ -1,7 +1,7 @@
 # Godot-Env
 <img align="right" size="50%" src="logo.png"> 
 
-Godot-Env provides a minimal and robust implementation of the  <a href="https://12factor.net/config" target="_blank">.env pattern</a> for Godot Engine. It is designed to be extremely lightweight and dependency-free, offering a clean way to manage your application's configuration by separating it from the source code.
+Godot-Env provides a minimal and robust implementation of the  <a href="https://12factor.net/config" target="_blank">.env pattern</a> for <a href="https://godotengine.org/">Godot Engine</a>. It is designed to be extremely lightweight and dependency-free, offering a clean way to manage your application's configuration by separating it from the source code.
 
 ## Installation
 ###### NOTE: **Upon initial import, Godot is expected to display several errors.** These messages occur because Godot-Env requires an autoload, which is only configured and added once the plugin has been successfully enabled.
